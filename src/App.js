@@ -1,15 +1,14 @@
 import React from "react";
 import BeerContainer from "./containers/BeerContainer";
 import './App.css';
-import BeerList from "./components/BeerList";
+// import BeerList from "./components/BeerList";
 
 function App() {
   return (
-    <>
-   
-   <BeerContainer />
-   </>
-  )
+    <div className="App">
+    <BeerContainer />
+    </div>
+  );
     
 }
 
