@@ -1,4 +1,4 @@
-import BeerList from "./BeerList";
+import React from 'react';
 
 
 const BeerSelector = () => {
