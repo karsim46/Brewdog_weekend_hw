@@ -1,10 +1,9 @@
 import React from 'react';
 
-
-const ListItem = ({beer}) => {
+const ListItem = ({beer, onBeerClick}) => {
+  
   const handleClick = function(){
-       console.log(`Clicked on ${beer}`)
-    
+    onBeerClick(beer);    
 }
 return <li onClick={handleClick}>{beer.name}</li>
 }
