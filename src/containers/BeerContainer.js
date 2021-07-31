@@ -6,25 +6,26 @@ import FavouriteBeers from '../components/FavouriteBeers';
 
 const BeerContainer = () => {
     const [beers, setBeers] = useState([]);
-    const [selectedBeer, setSelectedBeer] = useState(null);
+    const [selectedBeerId, setSelectedBeerId] = useState('');
 
     useEffect (() => {
       getBeers();
     },[])
 
-    const getBeers = function (){
+    const getBeers =  () => {
         
         fetch('https://api.punkapi.com/v2/beers')
         .then(res => res.json())
         .then(beers => setBeers(beers))
     }
 
-    // const onBeerClick = function(beer){
+    
+    // const onBeerSelected = function(beer){
     //   setSelectedBeer(beer);
     // }
 
-    const onBeerSelected = function(beer){
-      setSelectedBeer(beer);
+    const handleBeerSelected = id => {
+      setSelectedBeerId(id)
     }
 
     const handleFavouriteToggle = (id) => {
@@ -38,13 +39,15 @@ const BeerContainer = () => {
 
     }
 
+    const selectedBeer = beers.find(beer => beer.id === selectedBeerId)
+
     return (
         <div className="main-container">
        
-        {/* <BeerList beers = {beers} onBeerClick={onBeerClick}/>  */}
-        <BeerSelector beers={beers} onBeerSelected={onBeerSelected}/>
-        {selectedBeer ? <BeerDetail selectedBeer={selectedBeer}/> :null}
-        <FavouriteBeers beers={beers} onBeerSelected={handleFavouriteToggle} />
+        {/* <BeerList beers = {beers} onBeerClick={onBeerSelected}/>  */}
+        <BeerSelector beers={beers} onBeerSelected={handleBeerSelected}/>
+        {selectedBeer ? <BeerDetail selectedBeer={selectedBeer} onFavouriteToggle={handleFavouriteToggle}/>:null}
+        <FavouriteBeers beers={beers} onBeerSelected={handleBeerSelected} />
         </div>
     );
 

@@ -2,7 +2,7 @@ import React from "react";
 import BeerSelector from "./BeerSelector";
 import ListItem from "./ListItem";
 
-const BeerList = ({beers, onBeerClick}) => {
+const BeerList = ({beers, onBeerClick,}) => {
 
     const beerItems = beers.map((beer, id) => {
         return <ListItem beer={beer} key={id} onBeerClick={onBeerClick}/>
